@@ -1,0 +1,19 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data files (too large to version; download from UCI ML Repository)
+data/
+
+# Generated exports (reproducible by running the scripts)
+exports/
+
+# OS
+Thumbs.db
