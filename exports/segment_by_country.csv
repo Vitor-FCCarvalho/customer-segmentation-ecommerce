@@ -1,38 +1,165 @@
-Country,About to Sleep,At Risk,Can't Lose Them,Champions,Lost,Loyal Customers,Need Attention,New Customers,Promising,Total
-United Kingdom,350,270,13,845,769,381,722,260,310,3920
-Germany,12,6,0,28,15,6,10,11,6,94
-France,8,1,0,27,18,6,11,10,6,87
-Spain,5,1,0,7,3,2,2,4,6,30
-Belgium,2,0,0,9,5,5,0,1,3,25
-Switzerland,3,3,0,1,4,3,1,3,3,21
-Portugal,3,1,0,4,4,0,2,3,2,19
-Italy,0,0,0,2,4,1,1,4,2,14
-Finland,1,0,0,3,1,1,0,3,3,12
-Austria,1,1,0,1,3,1,1,3,0,11
-Norway,2,0,0,3,1,2,0,1,1,10
-Australia,2,1,0,2,2,2,0,0,0,9
-Denmark,1,1,0,1,0,0,1,2,3,9
-Netherlands,0,0,0,2,3,0,3,0,1,9
-Channel Islands,1,3,0,1,2,1,1,0,0,9
-Japan,2,1,0,1,2,0,1,0,1,8
-Sweden,2,0,0,3,1,0,1,1,0,8
-Cyprus,0,0,0,0,2,4,0,1,1,8
-Poland,4,0,0,0,0,2,0,0,0,6
-Unspecified,2,2,0,0,0,0,0,0,0,4
-USA,0,0,0,0,1,0,0,2,1,4
-Canada,1,0,0,0,2,1,0,0,0,4
-Greece,1,0,0,0,2,0,0,1,0,4
-Israel,2,0,0,0,0,0,0,0,1,3
-EIRE,0,0,0,2,0,1,0,0,0,3
-United Arab Emirates,1,0,0,0,1,0,0,0,0,2
-Bahrain,0,0,0,0,2,0,0,0,0,2
-Malta,1,0,0,1,0,0,0,0,0,2
-Brazil,0,0,0,0,1,0,0,0,0,1
-Lebanon,0,0,0,0,1,0,0,0,0,1
-Iceland,0,0,0,1,0,0,0,0,0,1
-Czech Republic,0,0,0,0,0,0,0,0,1,1
-European Community,0,0,0,0,0,1,0,0,0,1
-Saudi Arabia,0,0,0,0,1,0,0,0,0,1
-RSA,0,0,0,0,0,0,0,0,1,1
-Lithuania,0,0,0,0,0,1,0,0,0,1
-Singapore,0,0,0,0,0,1,0,0,0,1
+Country,Segment,Customers,Revenue
+Australia,Champions,2,127695.19
+Australia,Loyal Customers,2,7029.77
+Australia,Hibernating,2,2567.1
+Australia,At Risk,2,759.85
+Australia,Lost,1,401.9
+Austria,Potential Loyalists,2,2736.29
+Austria,Need Attention,1,2662.06
+Austria,Lost,3,2072.7200000000003
+Austria,Promising,1,742.9300000000001
+Austria,Hibernating,1,707.09
+Austria,At Risk,1,562.41
+Austria,Champions,1,437.98
+Austria,Loyal Customers,1,277.2
+Bahrain,Lost,2,548.4
+Belgium,Champions,9,25522.77
+Belgium,Need Attention,3,5009.0
+Belgium,Loyal Customers,3,4025.68
+Belgium,At Risk,2,2959.21
+Belgium,Lost,5,1535.41
+Belgium,Hibernating,2,1402.08
+Belgium,Potential Loyalists,1,742.19
+Brazil,Lost,1,1143.6
+Canada,At Risk,1,2940.04
+Canada,Lost,2,674.78
+Canada,Hibernating,1,51.559999999999995
+Channel Islands,Loyal Customers,1,8137.02
+Channel Islands,At Risk,3,5843.72
+Channel Islands,Lost,2,2148.2400000000002
+Channel Islands,Need Attention,1,1621.88
+Channel Islands,Hibernating,1,1432.0
+Channel Islands,Champions,1,1257.68
+Cyprus,Loyal Customers,3,9967.47
+Cyprus,At Risk,1,1698.9
+Cyprus,Lost,2,796.4300000000001
+Cyprus,About to Sleep,1,600.39
+Cyprus,Promising,1,439.66
+Czech Republic,Need Attention,1,826.74
+Denmark,Hibernating,1,7829.89
+Denmark,Potential Loyalists,1,3415.3
+Denmark,Champions,1,3312.42
+Denmark,Need Attention,3,2574.25
+Denmark,At Risk,1,1226.88
+Denmark,About to Sleep,1,427.70000000000005
+Denmark,New Customers,1,168.9
+EIRE,Champions,2,260921.25
+EIRE,At Risk,1,4341.21
+European Community,At Risk,1,1300.25
+Finland,Champions,3,15179.18
+Finland,At Risk,1,1797.24
+Finland,Potential Loyalists,2,1728.38
+Finland,Hibernating,1,1710.39
+Finland,About to Sleep,3,1475.53
+Finland,Lost,1,511.36
+Finland,New Customers,1,144.0
+France,Champions,30,134317.66
+France,Loyal Customers,5,27551.31
+France,Need Attention,5,15375.810000000001
+France,Potential Loyalists,9,11991.26
+France,Lost,17,5296.05
+France,Hibernating,8,4264.42
+France,At Risk,3,4159.76
+France,Can't Lose Them,1,3344.64
+France,About to Sleep,4,1279.3700000000001
+France,Promising,3,794.49
+France,New Customers,2,559.54
+Germany,Champions,29,162354.34
+Germany,Lost,14,20305.25
+Germany,Potential Loyalists,13,11501.4
+Germany,Hibernating,12,10399.28
+Germany,Loyal Customers,5,10312.68
+Germany,At Risk,8,8129.82
+Germany,Promising,4,1769.47
+Germany,About to Sleep,4,1535.48
+Germany,New Customers,2,1375.75
+Germany,Need Attention,3,994.9300000000001
+Greece,Lost,2,3048.55
+Greece,Hibernating,1,1030.98
+Greece,New Customers,1,680.99
+Iceland,Champions,1,4310.0
+Israel,Hibernating,2,7083.66
+Israel,Need Attention,1,132.18
+Italy,Champions,2,4437.69
+Italy,Potential Loyalists,2,3662.36
+Italy,Loyal Customers,1,3338.2200000000003
+Italy,Lost,4,2282.03
+Italy,Promising,3,2131.8
+Italy,About to Sleep,1,1193.32
+Italy,Need Attention,1,437.82
+Japan,Champions,1,21429.39
+Japan,Potential Loyalists,1,6977.04
+Japan,Lost,2,5163.4
+Japan,At Risk,1,3010.74
+Japan,Hibernating,2,606.16
+Japan,About to Sleep,1,229.64000000000001
+Lebanon,Lost,1,1693.88
+Lithuania,At Risk,1,1661.06
+Malta,Champions,1,1820.09
+Malta,Hibernating,1,905.5
+Netherlands,Champions,3,282414.29
+Netherlands,Need Attention,1,1531.44
+Netherlands,Lost,3,945.1
+Netherlands,Potential Loyalists,1,463.66
+Netherlands,About to Sleep,1,91.85
+Norway,Champions,3,20226.64
+Norway,Loyal Customers,2,7565.360000000001
+Norway,Hibernating,2,4875.79
+Norway,Potential Loyalists,1,2906.85
+Norway,Lost,1,334.4
+Norway,About to Sleep,1,256.4
+Poland,Loyal Customers,2,5297.19
+Poland,Hibernating,4,2037.46
+Portugal,Champions,4,19381.11
+Portugal,Potential Loyalists,3,5242.77
+Portugal,Hibernating,3,4058.1
+Portugal,Lost,4,1512.0
+Portugal,Need Attention,2,1344.06
+Portugal,About to Sleep,1,892.47
+Portugal,At Risk,1,514.85
+Portugal,Promising,1,430.48
+RSA,About to Sleep,1,1002.3100000000001
+Saudi Arabia,Lost,1,145.92
+Singapore,Loyal Customers,1,21279.29
+Spain,Champions,8,41495.85
+Spain,At Risk,3,5796.64
+Spain,About to Sleep,3,4350.49
+Spain,Hibernating,5,3240.87
+Spain,Need Attention,3,2379.33
+Spain,Potential Loyalists,2,2170.77
+Spain,Lost,3,1455.2
+Spain,Promising,2,497.35
+Spain,New Customers,1,172.06
+Sweden,Champions,3,35723.19
+Sweden,Potential Loyalists,1,957.59
+Sweden,Promising,1,671.69
+Sweden,Hibernating,2,529.26
+Sweden,Lost,1,486.1
+Switzerland,At Risk,4,17153.5
+Switzerland,Champions,1,9035.52
+Switzerland,Promising,1,6207.67
+Switzerland,Need Attention,3,6016.400000000001
+Switzerland,Loyal Customers,2,5594.88
+Switzerland,Hibernating,3,5504.08
+Switzerland,Lost,4,4280.4
+Switzerland,About to Sleep,1,1635.66
+Switzerland,Potential Loyalists,2,1015.84
+USA,About to Sleep,1,1579.51
+USA,Potential Loyalists,1,1346.97
+USA,Lost,1,383.95
+USA,New Customers,1,269.96
+United Arab Emirates,Hibernating,1,1013.04
+United Arab Emirates,Lost,1,889.24
+United Kingdom,Champions,1018,4686526.69
+United Kingdom,Loyal Customers,304,697400.871
+United Kingdom,At Risk,561,577887.501
+United Kingdom,Potential Loyalists,435,439304.58
+United Kingdom,Lost,589,258802.911
+United Kingdom,Need Attention,346,217337.99
+United Kingdom,Can't Lose Them,64,177255.58000000002
+United Kingdom,Hibernating,350,144605.221
+United Kingdom,About to Sleep,142,52502.62
+United Kingdom,Promising,78,20600.94
+United Kingdom,New Customers,33,12799.74
+Unspecified,At Risk,2,1568.64
+Unspecified,Hibernating,2,1092.13

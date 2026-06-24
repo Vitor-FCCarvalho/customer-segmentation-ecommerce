@@ -19,23 +19,20 @@ def country_revenue(df: pd.DataFrame) -> pd.DataFrame:
     return df_country
 
 def segment_by_country(df_clean: pd.DataFrame, df_rfm: pd.DataFrame) -> pd.DataFrame:
-    df = df_clean[['CustomerID', 'Country']].dropna(subset=['CustomerID']).drop_duplicates()
+    df = df_clean.dropna(subset=['CustomerID']).copy()
     df['CustomerID'] = df['CustomerID'].astype(int)
+    df['Revenue']    = df['Quantity'] * df['UnitPrice']
 
     df_rfm = df_rfm.copy()
     df_rfm['CustomerID'] = df_rfm['CustomerID'].astype(int)
 
     df_merged = df.merge(df_rfm[['CustomerID', 'Segment']], on='CustomerID', how='inner')
 
-    df_pivot = (df_merged.groupby(['Country', 'Segment'])
-                         .size()
-                         .unstack(fill_value=0)
-                         .reset_index()
+    return (df_merged.groupby(['Country', 'Segment'], as_index=False)
+            .agg(Customers=('CustomerID', 'nunique'), Revenue=('Revenue', 'sum'))
+            .sort_values(['Country', 'Revenue'], ascending=[True, False])
+            .reset_index(drop=True)
     )
-    df_pivot['Total'] = df_pivot.iloc[:, 1:].sum(axis=1)
-    df_pivot = df_pivot.sort_values('Total', ascending=False)
-
-    return df_pivot
 
 if __name__ == "__main__":
     BASE_DIR = Path.cwd().parent
@@ -44,6 +41,7 @@ if __name__ == "__main__":
     export_path = BASE_DIR / "exports"
 
     df_clean = pd.read_csv(data_path, low_memory=False)
+    df_clean = df_clean[df_clean['TransactionType'] == 'Sale']  # revenue/segment geo from sales only
     df_rfm   = pd.read_csv(rfm_path)
 
     df_country  = country_revenue(df_clean)

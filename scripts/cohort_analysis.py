@@ -31,14 +31,43 @@ def cohort_matrix(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
 
     return df_cohort.reset_index(), df_retention.reset_index()
 
+def cohort_long(df_cohort: pd.DataFrame, df_retention: pd.DataFrame) -> pd.DataFrame:
+    # Tidy (long) format: one row per cohort/month
+    counts = df_cohort.melt(id_vars='CohortMonth',
+             var_name='MonthsElapsed', value_name='ActiveCustomers')
+    counts['MonthsElapsed'] = counts['MonthsElapsed'].str.extract(r'(\d+)').astype(int)
+
+    pcts = df_retention.melt(id_vars='CohortMonth',
+            var_name='MonthsElapsed', value_name='RetentionPct')
+    pcts['MonthsElapsed'] = pcts['MonthsElapsed'].str.extract(r'(\d+)').astype(int)
+
+    out = counts.merge(pcts, on=['CohortMonth', 'MonthsElapsed'])
+
+    sizes = (out[out['MonthsElapsed'] == 0][['CohortMonth', 'ActiveCustomers']]
+             .rename(columns={'ActiveCustomers': 'CohortSize'}))
+    out = out.merge(sizes, on='CohortMonth')
+
+    last_month = pd.Period(out['CohortMonth'].max(), freq='M')
+    observable = out.apply(
+        lambda row: pd.Period(row['CohortMonth'], freq='M') + row['MonthsElapsed'] <= last_month,
+        axis=1)
+
+    return (out[observable]
+            [['CohortMonth', 'MonthsElapsed', 'CohortSize', 'ActiveCustomers', 'RetentionPct']]
+            .sort_values(['CohortMonth', 'MonthsElapsed'])
+            .reset_index(drop=True))
+
 if __name__ == "__main__":
     BASE_DIR = Path.cwd().parent
     data_path   = BASE_DIR / "data" / "clean" / "clean_retail.csv"
     export_path = BASE_DIR / "exports"
 
     df_clean = pd.read_csv(data_path, low_memory=False)
+    df_clean = df_clean[df_clean['TransactionType'] == 'Sale'] 
 
     df_cohort, df_retention = cohort_matrix(df_clean)
 
     df_cohort.to_csv(os.path.join(export_path, 'cohort_counts.csv'), index=False)
     df_retention.to_csv(os.path.join(export_path, 'cohort_retention.csv'), index=False)
+    cohort_long(df_cohort, df_retention).to_csv(
+        os.path.join(export_path, 'cohort_retention_long.csv'), index=False)

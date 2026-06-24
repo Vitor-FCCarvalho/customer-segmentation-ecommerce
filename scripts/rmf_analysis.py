@@ -33,10 +33,13 @@ def rmf(df: pd.DataFrame) -> pd.DataFrame:
     df_monetary  = monetary_analysis(df)
     df_frequency = frequency_analysis(df)
 
-    return (df_recency.merge(df_monetary, on='CustomerID')
-                      .merge(df_frequency, on='CustomerID')
-                      .drop(columns=['MostRecentPurchaseDate'])
+    df_rmf = (df_recency.merge(df_monetary, on='CustomerID')
+                        .merge(df_frequency, on='CustomerID')
+                        .drop(columns=['MostRecentPurchaseDate'])
     )
+    df_rmf['CustomerID'] = df_rmf['CustomerID'].astype(int)
+
+    return df_rmf
 
 def customer_scoring(df: pd.DataFrame) -> pd.DataFrame:
     df = rmf(df)
@@ -50,22 +53,27 @@ def customer_scoring(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 def assign_rfm_segment(r: int, f: int, m: int) -> str:
-    if r >= 4 and f >= 4 and m >= 4:
+    
+    if r >= 4 and f >= 4:
         return 'Champions'
-    elif f >= 4 and m >= 4:
+    elif r >= 3 and f >= 4:
         return 'Loyal Customers'
-    elif r >= 4 and f <= 2:
-        return 'Promising'
-    elif r >= 3 and f <= 2:
+    elif r >= 4 and f >= 2:
+        return 'Potential Loyalists'
+    elif r == 5:
         return 'New Customers'
-    elif r <= 2 and f >= 3 and m >= 3:
+    elif r == 4:
+        return 'Promising'
+    elif r == 3 and f >= 2:
         return 'Need Attention'
-    elif r <= 1 and f >= 4:
+    elif r == 3:
+        return 'About to Sleep'
+    elif f == 5:
         return "Can't Lose Them"
-    elif r >= 3 and f >= 2:
-        return 'Need Attention'
-    elif r == 2 and f <= 2:
-        return 'Sleepers'
+    elif f >= 3:
+        return 'At Risk'
+    elif r == 2:
+        return 'Hibernating'
     else:
         return 'Lost'
 
@@ -83,6 +91,7 @@ if __name__ == "__main__":
     export_path = BASE_DIR / "exports"
 
     df = pd.read_csv(data_path, low_memory=False)
+    df = df[df['TransactionType'] == 'Sale']  # RFM is purchase behaviour; exclude returns
 
     df_rmf = customer_segmentation(df)
     df_rmf = df_rmf.sort_values('RFM_Score', ascending=False)
