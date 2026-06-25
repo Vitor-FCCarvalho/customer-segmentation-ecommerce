@@ -5,7 +5,7 @@ from pathlib import Path
 BASE_DIR    = Path(__file__).parent
 DATA_PATH   = BASE_DIR / "data" / "clean" / "clean_retail.csv"
 EXPORT_PATH = BASE_DIR / "exports"
-SCHEMA_PATH = BASE_DIR / "exports" / "star_schema"
+SCHEMA_PATH = BASE_DIR / "exports" / "galaxy_schema"
 
 VALID_SEGMENTS = {
     'Champions', 'Loyal Customers', 'Potential Loyalists',
@@ -141,7 +141,7 @@ def check_cohort_long_consistency(df: pd.DataFrame) -> bool:
 
 def check_schema_files_exist() -> bool:
     missing = [f for f in EXPECTED_SCHEMA_FILES if not (SCHEMA_PATH / f).exists()]
-    return _report('All star schema files exist',
+    return _report('All galaxy schema files exist',
                    not missing, f'missing: {missing}' if missing else '')
 
 def check_fk_customer(fact: pd.DataFrame, dim: pd.DataFrame, name: str) -> bool:
@@ -251,7 +251,7 @@ def run_checks() -> bool:
         df_cohort_long = _load(EXPORT_PATH / 'cohort_retention_long.csv')
         results.append(check_cohort_long_consistency(df_cohort_long))
 
-    print('\n[Star Schema Integrity]')
+    print('\n[Galaxy Schema Integrity]')
     if not check_schema_files_exist():
         results.append(False)
     else:

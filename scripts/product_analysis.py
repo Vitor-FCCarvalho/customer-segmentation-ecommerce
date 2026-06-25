@@ -2,7 +2,7 @@ import pandas as pd
 import os
 from pathlib import Path
 
-from star_schema_export import SERVICE_CODES
+from galaxy_schema_export import SERVICE_CODES
 
 
 def product_affinity(df_clean: pd.DataFrame, df_rfm: pd.DataFrame, top_n: int = 10) -> pd.DataFrame:

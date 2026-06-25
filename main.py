@@ -6,7 +6,7 @@ BASE_DIR    = Path(__file__).parent
 RAW_PATH    = BASE_DIR / "data" / "raw" / "Online_Retail.xlsx"
 DATA_PATH   = BASE_DIR / "data" / "clean" / "clean_retail.csv"
 EXPORT_PATH = BASE_DIR / "exports"
-SCHEMA_PATH = BASE_DIR / "exports" / "star_schema"
+SCHEMA_PATH = BASE_DIR / "exports" / "galaxy_schema"
 
 sys.path.insert(0, str(BASE_DIR / "scripts"))
 
@@ -15,8 +15,8 @@ from rmf_analysis        import customer_segmentation
 from geographic_analysis import country_revenue, segment_by_country
 from product_analysis    import product_affinity
 from cohort_analysis     import cohort_matrix, cohort_long
-from star_schema_export  import (dim_date, dim_customer, dim_segment,
-                                 dim_product, fact_sales, fact_returns)
+from galaxy_schema_export import (dim_date, dim_customer, dim_segment,
+                                  dim_product, fact_sales, fact_returns)
 from quality_checks      import run_checks
 
 
@@ -51,7 +51,7 @@ def run():
     df_retention.to_csv(EXPORT_PATH / 'cohort_retention.csv', index=False)
     cohort_long(df_cohort, df_retention).to_csv(EXPORT_PATH / 'cohort_retention_long.csv', index=False)
 
-    print("Generating star schema exports...")
+    print("Generating galaxy schema exports...")
     dim_date(df_clean).to_csv(SCHEMA_PATH / 'dim_date.csv', index=False)
     dim_customer(df_clean, df_rfm).to_csv(SCHEMA_PATH / 'dim_customer.csv', index=False)
     dim_segment().to_csv(SCHEMA_PATH / 'dim_segment.csv', index=False)

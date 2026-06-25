@@ -2,7 +2,7 @@
 
 A UK-based, non-store online retailer sells giftware and homeware to **~4,300 identified customers across 38 countries**. With **~525K transactions** packed into a single trading year, the platform's core commercial challenge is no longer *how much* it sells in aggregate, but segmenting customers into different groups and figuring out **which customers to retain, win back, or grow**.
 
-This project builds a full analytics stack on top of the public [UCI Online Retail dataset](https://archive.ics.uci.edu/dataset/352/online+retail): a Python/pandas pipeline that cleans the raw transaction log, computes **RFM customer segmentation** plus supporting geographic, product, and cohort analyses, validates everything with automated quality checks, and exports a **star schema** to a Power BI dashboard structured around three business questions. Interact with the full dashboard [here](https://app.powerbi.com/view?r=eyJrIjoiYjQ4MDhiMTgtNmMyNC00YjdiLWE0YjEtOTkxZDQ4ZmM4ODRjIiwidCI6ImM0NjQzM2I0LWJlMjMtNDgxYi05ODkxLTc5Yzk3YTA2MmFlYyJ9).
+This project builds a full analytics stack on top of the public [UCI Online Retail dataset](https://archive.ics.uci.edu/dataset/352/online+retail): a Python/pandas pipeline that cleans the raw transaction log, computes **RFM customer segmentation** plus supporting geographic, product, and cohort analyses, validates everything with automated quality checks, and exports a galaxy schema to a Power BI dashboard structured around three business questions. Interact with the full dashboard [here](https://app.powerbi.com/view?r=eyJrIjoiYjQ4MDhiMTgtNmMyNC00YjdiLWE0YjEtOTkxZDQ4ZmM4ODRjIiwidCI6ImM0NjQzM2I0LWJlMjMtNDgxYi05ODkxLTc5Yzk3YTA2MmFlYyJ9).
 
 ## Dashboard
 
@@ -81,14 +81,14 @@ python main.py  orchestrates:
     geographic_analysis.py       # revenue & segment mix by country
     product_analysis.py          # top products per segment
     cohort_analysis.py           # monthly retention cohorts
-    star_schema_export.py        # dim_* tables + fact_sales / fact_returns
+    galaxy_schema_export.py        # dim_* tables + fact_sales / fact_returns
     quality_checks.py            # automated integrity checks
         │
         ▼
-exports/star_schema/*.csv  ─────►  Power BI dashboard
+exports/galaxy_schema/*.csv  ─────►  Power BI dashboard
 ```
 
-The whole pipeline runs from raw data to validated exports with a single command (`python main.py`), finishing with a 28/28 quality-check report (column and row-count checks, sale/return sign rules, FK integrity across the star schema, unique product keys, and a contiguous date table).
+The whole pipeline runs from raw data to validated exports with a single command (`python main.py`), finishing with a 28/28 quality-check report (column and row-count checks, sale/return sign rules, FK integrity across the galaxy schema, unique product keys, and a contiguous date table).
 
 ---
 
@@ -106,7 +106,7 @@ Pre-computed aggregations that are clearer to build once in pandas than to re-de
 
 ---
 
-## Star Schema Exports
+## Galaxy Schema Exports
 
 Fact and dimension tables for interactive filtering and aggregation in Power BI.
 
@@ -123,7 +123,7 @@ Fact and dimension tables for interactive filtering and aggregation in Power BI.
 
 ## Tech Stack
 
-Python (Pandas, NumPy, Matplotlib, Seaborn), Jupyter, Power BI (DAX).
+Python (Pandas, NumPy), Jupyter, Power BI (DAX).
 
 Exploratory analysis lives in `notebooks/` (data-quality investigation, RFM distributions, and supplementary geographic/product/cohort analysis); the productionised logic lives in `scripts/` and is driven by `main.py`.
 

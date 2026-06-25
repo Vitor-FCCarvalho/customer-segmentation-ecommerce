@@ -155,7 +155,7 @@ if __name__ == "__main__":
     BASE_DIR  = Path(__file__).parent.parent
     data_path = BASE_DIR / "data" / "clean" / "clean_retail.csv"
     rfm_path  = BASE_DIR / "exports" / "customer_rmf.csv"
-    out_path  = BASE_DIR / "exports" / "star_schema"
+    out_path  = BASE_DIR / "exports" / "galaxy_schema"
 
     out_path.mkdir(exist_ok=True)
 
