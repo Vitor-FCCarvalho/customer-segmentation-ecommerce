@@ -27,9 +27,9 @@ Before looking at individual customers, stakeholders want the top-line vitals: h
 Every customer is scored on **Recency** (days since last purchase), **Frequency** (number of orders), and **Monetary** value, then assigned to one of **11 behavioural segments** (Champions, Loyal Customers, At Risk, Lost, …). This page shows what defines each segment and how unevenly value is distributed.
 
 **Visuals:**
-- **Segment Profiles table**: average recency, frequency, monetary value, and AOV per segment, each row colour-coded by segment. The contrast is stark — **Champions** average 12 days since last purchase, 10 orders, £5,226 spend, and a £513 AOV, while **Lost** customers sit at 277 days and barely over one order.
-- **Customer Count per Segment (donut)**: **Champions are 25.8% of customers**, followed by Lost (15.4%), At Risk (13.7%), and Potential Loyalists (11%). Read alongside the profiles table, it makes the value concentration obvious — roughly a quarter of customers (Champions) generate the bulk of revenue, mirroring the Pareto pattern found in EDA (**~26% of customers drive 80% of revenue**).
-- **Customer Segmentation by Recency and Frequency (scatter)**: RFM map in which each bubble is a customer, colored by segment. Recent, frequent buyers cluster on the left (low recency, high frequency); the long low-frequency tail stretching right toward 400 days exposes the At-Risk and Lost populations.
+- **Segment Profiles table**: average recency, frequency, monetary value, and AOV per segment, each row color-coded by segment. The contrast is very evident: **Champions** average 12 days since last purchase, 10 orders, £5,226 spend, and a £513 AOV, while **Lost** customers sit at 277 days and barely over one order.
+- **Customer Count per Segment (donut)**: **Champions are 25.8% of customers**, followed by Lost (15.4%), At Risk (13.7%), and Potential Loyalists (11%). Read alongside the profiles table, it makes the value concentration obvious: roughly a quarter of customers (Champions) generate the bulk of revenue, mirroring the Pareto pattern found in EDA (**~26% of customers drive 80% of revenue**).
+- **Customer Segmentation by Recency and Frequency (scatter)**: RFM map in which each bubble is a customer, colored by segment. Recent, frequent buyers cluster on the left (low recency, high frequency), while the long low-frequency tail stretching right toward 400 days exposes the At Risk and Lost populations.
 
 Segments are derived in `scripts/rmf_analysis.py`. Each metric is bucketed into quintiles (ranked first to break ties, and log-scaled for the heavily skewed monetary value), then mapped through a Recency × Frequency grid:
 
@@ -60,10 +60,10 @@ def assign_rfm_segment(r, f, m):
 This is a **selection-driven** page: the user picks one segment from the slicer and every visual reshapes to that audience, turning the segmentation into an actionable campaign brief.
 
 **Visuals (Champions shown):**
-- **Segment banner + brief**: the selected segment's name (colour-coded), its **Description** ("Bought recently, buy often and spend the most.") and **Recommended Action** ("Reward them. Early access to new products, loyalty perks, referral program."), all sourced from the `dim_segment` catalogue.
-- **KPI cards** for the selected segment: **Net Revenue £5.65M**, **1,121 customers**, **£513 AOV**, **2.32% Return Rate**, and **12-day average recency** — sizing both the audience and the urgency of the campaign.
-- **Net Revenue by Country**: where the segment's money is — for Champions, the **UK (£4.55M)** dominates, guiding geo-targeted and localised campaigns.
-- **Top Products by Revenue**: what to feature in that segment's emails — Regency Cakestand, White Hanging Heart T-Light Holder, and Jumbo Bag Red Retrospot lead for Champions.
+- **Segment banner + brief**: the selected segment's name (color-coded), its **Description** ("Bought recently, buy often and spend the most.") and **Recommended Action** ("Reward them. Early access to new products, loyalty perks, referral program."), all sourced from the `dim_segment` catalogue.
+- **KPI cards** for the selected segment: **Net Revenue £5.65M**, **1,121 customers**, **£513 AOV**, **2.32% Return Rate**, and **12-day average recency**, sizing both the audience and the urgency of the campaign.
+- **Net Revenue by Country**: where the segment's money is. For Champions, the **UK (£4.55M)** dominates, guiding campaigns based on customer location.
+- **Top Products by Revenue**: highly popular products worth advertising for each customer segment. For Champions, Regency Cakestand, White Hanging Heart T-Light Holder, and Jumbo Bag Red Retrospot.
 
 ---
 
@@ -73,7 +73,7 @@ This is a **selection-driven** page: the user picks one segment from the slicer 
 data/raw/Online_Retail.xlsx
         │
         ▼
-scripts/data_cleaning.py         # raw -> clean: dedupe, drop price errors, split Sales vs Returns
+scripts/data_cleaning.py         # raw -> clean: remove duplicates, drop price errors, split Sales vs Returns
         │
         ▼
 python main.py  orchestrates:
@@ -116,8 +116,8 @@ Fact and dimension tables for interactive filtering and aggregation in Power BI.
 | `fact_returns.csv` | return line item | Returned quantity and value (`C` invoices) stored as positive magnitudes |
 | `dim_customer.csv` | unique customer | RFM, segment, AOV, country + short code, cohort month, first/last purchase |
 | `dim_product.csv` | stock code | Description and ProductType (Merchandise / Postage & Fees / Gift Voucher) |
-| `dim_segment.csv` | segment | Description, recommended action, sort order, and colour hex |
-| `dim_date.csv` | calendar date | Year, quarter, month, MonthYear label, day name — contiguous daily calendar |
+| `dim_segment.csv` | segment | Description, recommended action, sort order, and color hex |
+| `dim_date.csv` | calendar date | Year, quarter, month, MonthYear label, day name |
 
 ---
 
